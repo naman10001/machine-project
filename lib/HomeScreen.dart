@@ -41,20 +41,35 @@ class _HomeScreenState extends State<HomeScreen> {
   double o33 = 0.0;
   double o34 = 0.0;
 
-  double? siramic;
-  double? lcd;
-  double? kasti;
-  double? other;
-  double? tAmount;
+  double siramic = 0.0;
+  double lcd = 0.0;
+  double kasti = 0.0;
+  double other = 0.0;
+  double tAmount = 0.0;
+
+  getTotal(
+    double totalvalue,
+    double siramicvalue,
+    double lcdvalue,
+    double kastivalue,
+    double othervalue,
+  ) {
+    print(totalvalue);
+    print(siramicvalue);
+    print(lcdvalue);
+    print(kastivalue);
+    print(othervalue);
+    setState(() {
+      tAmount += totalvalue;
+      siramic += siramicvalue;
+      lcd += lcdvalue;
+      kasti += kastivalue;
+      other += othervalue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    double siramic = o1 + o11 + o21 + o31;
-    double lcd = o2 + o12 + o22 + o32;
-    double kasti = o3 + o13 + o23 + o33;
-    double other = o4 + o14 + o24 + o34;
-    double tAmount = total1 + total2 + total3 + total4 + total5;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Costing Calculation'),
@@ -82,7 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 8,
             ),
-            Product(total: total1),
+            Product(
+              total: total1,
+              getTotal: getTotal,
+            ),
             const SizedBox(height: 2),
             Other(
               total: total2,
@@ -90,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate2: o2,
               rate3: o3,
               rate4: o4,
+              getTotal: getTotal,
             ),
             const SizedBox(height: 2),
             Other1(
@@ -98,6 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate2: o12,
               rate3: o13,
               rate4: o14,
+              getTotal: getTotal,
             ),
             const SizedBox(height: 2),
             Other2(
@@ -106,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate2: o22,
               rate3: o23,
               rate4: o24,
+              getTotal: getTotal,
             ),
             const SizedBox(height: 2),
             Other3(
@@ -114,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate2: o32,
               rate3: o33,
               rate4: o34,
+              getTotal: getTotal,
             ),
             const SizedBox(height: 8),
             const Divider(

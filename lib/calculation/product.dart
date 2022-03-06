@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class Product extends StatefulWidget {
   double total;
-  Product({required this.total});
+  Function getTotal;
+
+  Product({required this.total, required this.getTotal});
 
   @override
   _ProductState createState() => _ProductState();
@@ -120,6 +122,36 @@ class _ProductState extends State<Product> {
             onSubmitted: (val) {
               setState(() {
                 _val = val;
+                var tr1 = (((double.tryParse(stitch1.text) ?? 00.00) *
+                        (double.tryParse(head1.text) ?? 00.00) *
+                        (double.tryParse(sRate1.text) ?? 00.00)) /
+                    1000);
+                var tr2 = (((double.tryParse(stitch2.text) ?? 00.00) *
+                        (double.tryParse(head2.text) ?? 00.00) *
+                        (double.tryParse(sRate2.text) ?? 00.00)) /
+                    1000);
+                var tr3 = (((double.tryParse(stitch3.text) ?? 00.00) *
+                        (double.tryParse(head3.text) ?? 00.00) *
+                        (double.tryParse(sRate3.text) ?? 00.00)) /
+                    1000);
+                var tr4 = (((double.tryParse(stitch4.text) ?? 00.00) *
+                        (double.tryParse(head4.text) ?? 00.00) *
+                        (double.tryParse(sRate4.text) ?? 00.00)) /
+                    1000);
+                var tr5 = (((double.tryParse(stitch5.text) ?? 00.00) *
+                        (double.tryParse(head5.text) ?? 00.00) *
+                        (double.tryParse(sRate5.text) ?? 00.00)) /
+                    1000);
+                var tr6 = (((double.tryParse(stitch6.text) ?? 00.00) *
+                        (double.tryParse(head6.text) ?? 00.00) *
+                        (double.tryParse(sRate6.text) ?? 00.00)) /
+                    1000);
+                var tr7 = (((double.tryParse(stitch7.text) ?? 00.00) *
+                        (double.tryParse(head7.text) ?? 00.00) *
+                        (double.tryParse(sRate7.text) ?? 00.00)) /
+                    1000);
+                widget.total = tr1 + tr2 + tr3 + tr4 + tr5 + tr6 + tr7;
+                widget.getTotal(widget.total, 0.0, 0.0, 0.0, 0.0);
               });
             },
           ),

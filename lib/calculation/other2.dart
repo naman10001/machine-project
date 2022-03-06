@@ -6,12 +6,14 @@ class Other2 extends StatefulWidget {
   double rate2;
   double rate3;
   double rate4;
+  Function getTotal;
   Other2({
     required this.total,
     required this.rate1,
     required this.rate2,
     required this.rate3,
     required this.rate4,
+    required this.getTotal,
   });
 
   @override
@@ -90,6 +92,18 @@ class _OtherState extends State<Other2> {
             onSubmitted: (val) {
               setState(() {
                 _val = val;
+                widget.rate1 = (double.tryParse(dn1.text) ?? 0.0) *
+                    (double.tryParse(rt1.text) ?? 0.0);
+                widget.rate2 = (double.tryParse(dn2.text) ?? 0.0) *
+                    (double.tryParse(rt2.text) ?? 0.0);
+                widget.rate3 = (double.tryParse(dn3.text) ?? 0.0) *
+                    (double.tryParse(rt3.text) ?? 0.0);
+                widget.rate4 = (double.tryParse(dn4.text) ?? 0.0) *
+                    (double.tryParse(rt4.text) ?? 0.0);
+                widget.total =
+                    widget.rate1 + widget.rate2 + widget.rate3 + widget.rate4;
+                widget.getTotal(widget.total, widget.rate1, widget.rate2,
+                    widget.rate3, widget.rate4);
               });
             },
           ),
