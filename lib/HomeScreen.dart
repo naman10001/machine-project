@@ -53,37 +53,37 @@ class _HomeScreenState extends State<HomeScreen> {
     double lcd = o2 + o12 + o22 + o32;
     double kasti = o3 + o13 + o23 + o33;
     double other = o4 + o14 + o24 + o34;
-    double tAmount =total1 + total2 + total3 + total4 + total5 ;
-        
+    double tAmount = total1 + total2 + total3 + total4 + total5;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Costing Calculation'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.done))],
+        title: const Text('Costing Calculation'),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.done))],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               height: 50,
               width: MediaQuery.of(context).size.width,
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   labelText: 'Enter Your Design Name',
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            ImagePick(),
-            SizedBox(
+            const ImagePick(),
+            const SizedBox(
               height: 8,
             ),
             Product(total: total1),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Other(
               total: total2,
               rate1: o1,
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate3: o3,
               rate4: o4,
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Other1(
               total: total3,
               rate1: o11,
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate3: o13,
               rate4: o14,
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Other2(
               total: total4,
               rate1: o21,
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               rate3: o23,
               rate4: o24,
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Other3(
               total: total5,
               rate1: o31,
@@ -115,8 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
               rate3: o33,
               rate4: o34,
             ),
-            SizedBox(height: 8),
-            Divider(
+            const SizedBox(height: 8),
+            const Divider(
               thickness: 2,
               color: Colors.black,
             ),
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
               other: other,
               tAmount: tAmount,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

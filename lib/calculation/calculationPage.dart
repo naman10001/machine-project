@@ -35,15 +35,15 @@ class _CalculationPageState extends State<CalculationPage> {
               width: 175,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(6))),
+                  borderRadius: const BorderRadius.all(Radius.circular(6))),
               child: Text(
                 name,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15),
+                style: const TextStyle(fontSize: 15),
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Expanded(
             child: Container(
               padding: const EdgeInsets.all(4),
@@ -51,11 +51,11 @@ class _CalculationPageState extends State<CalculationPage> {
               width: 175,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(6))),
+                  borderRadius: const BorderRadius.all(Radius.circular(6))),
               child: Text(
                 name1,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15),
+                style: const TextStyle(fontSize: 15),
               ),
             ),
           ),
@@ -70,35 +70,35 @@ class _CalculationPageState extends State<CalculationPage> {
           child:
               boxList1('Total Siramic Amount :- ', widget.siramic.toString()),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.all(10),
           child: boxList1('Total LCD Amount :- ', widget.lcd.toString()),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.all(10),
           child: boxList1('Total kasti Amount :- ', widget.kasti.toString()),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: boxList1('Total Other Amount :- ', widget.other.toString()),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           height: 30,
           width: 250,
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey, width: 1),
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(10),
             ),
           ),
           child: Text(
-            'Your Total Amount ' + ' :- ' + widget.tAmount.toString(),
-            style: TextStyle(fontSize: 15),
+            'Your Total Amount :- ' + widget.tAmount.toString(),
+            style: const TextStyle(fontSize: 15),
           ),
         ),
       ],

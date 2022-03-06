@@ -47,19 +47,19 @@ class _ImagePickState extends State<ImagePick> {
                     fit: BoxFit.cover,
                     width: double.infinity,
                   )
-                : Text(
+                : const Text(
                     'No Image Found',
                     textAlign: TextAlign.center,
                   ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Expanded(
             child: ElevatedButton.icon(
               onPressed: _pickImage,
-              icon: Icon(Icons.camera),
-              label: Text('Take Image'),
+              icon: const Icon(Icons.camera),
+              label: const Text('Take Image'),
             ),
           )
         ],

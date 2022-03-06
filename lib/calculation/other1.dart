@@ -19,20 +19,20 @@ class Other1 extends StatefulWidget {
 }
 
 class _OtherState extends State<Other1> {
-  TextEditingController name1 = new TextEditingController();
-  TextEditingController name2 = new TextEditingController();
-  TextEditingController name3 = new TextEditingController();
-  TextEditingController name4 = new TextEditingController();
+  TextEditingController name1 = TextEditingController();
+  TextEditingController name2 = TextEditingController();
+  TextEditingController name3 = TextEditingController();
+  TextEditingController name4 = TextEditingController();
 
-  TextEditingController dn1 = new TextEditingController();
-  TextEditingController dn2 = new TextEditingController();
-  TextEditingController dn3 = new TextEditingController();
-  TextEditingController dn4 = new TextEditingController();
+  TextEditingController dn1 = TextEditingController();
+  TextEditingController dn2 = TextEditingController();
+  TextEditingController dn3 = TextEditingController();
+  TextEditingController dn4 = TextEditingController();
 
-  TextEditingController rt1 = new TextEditingController();
-  TextEditingController rt2 = new TextEditingController();
-  TextEditingController rt3 = new TextEditingController();
-  TextEditingController rt4 = new TextEditingController();
+  TextEditingController rt1 = TextEditingController();
+  TextEditingController rt2 = TextEditingController();
+  TextEditingController rt3 = TextEditingController();
+  TextEditingController rt4 = TextEditingController();
 
   var d1;
   var d2;
@@ -56,11 +56,11 @@ class _OtherState extends State<Other1> {
           width: 75,
           decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.all(Radius.circular(6))),
+              borderRadius: const BorderRadius.all(Radius.circular(6))),
           child: Text(
             name,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15),
+            style: const TextStyle(fontSize: 15),
           ),
         ),
       );
@@ -78,7 +78,7 @@ class _OtherState extends State<Other1> {
           width: 75,
           decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.all(Radius.circular(6))),
+              borderRadius: const BorderRadius.all(Radius.circular(6))),
           child: TextField(
             decoration: InputDecoration(
               isCollapsed: true,
@@ -113,14 +113,14 @@ class _OtherState extends State<Other1> {
           padding: const EdgeInsets.all(10),
           height: 50,
           width: 150,
-          child: TextField(
+          child: const TextField(
             decoration: InputDecoration(
               labelText: 'Item Name',
               border: OutlineInputBorder(),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Container(
@@ -128,11 +128,11 @@ class _OtherState extends State<Other1> {
           child: Row(
             children: [
               boxList1('Siramic'),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Diamond', dn1, d1),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Rate', rt1, r1),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList1(widget.rate1.toString()),
             ],
           ),
@@ -142,11 +142,11 @@ class _OtherState extends State<Other1> {
           child: Row(
             children: [
               boxList1('LCD'),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Diamond', dn2, d2),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Rate', rt2, r2),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList1(widget.rate2.toString()),
             ],
           ),
@@ -156,11 +156,11 @@ class _OtherState extends State<Other1> {
           child: Row(
             children: [
               boxList1('kasti'),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Diamond', dn3, d3),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Rate', rt3, r3),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList1(widget.rate3.toString()),
             ],
           ),
@@ -170,11 +170,11 @@ class _OtherState extends State<Other1> {
           child: Row(
             children: [
               boxList1('other'),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Diamond', dn4, d4),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList2('Rate', rt4, r4),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               boxList1(widget.rate4.toString()),
             ],
           ),
@@ -183,7 +183,7 @@ class _OtherState extends State<Other1> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              Expanded(
+              const Expanded(
                   child: Text(
                 'Total Amount :- ',
                 style: TextStyle(fontSize: 16),
@@ -195,11 +195,11 @@ class _OtherState extends State<Other1> {
                   width: 100,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 1),
-                      borderRadius: BorderRadius.all(Radius.circular(6))),
+                      borderRadius: const BorderRadius.all(Radius.circular(6))),
                   child: Text(
                     widget.total.toString(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15),
+                    style: const TextStyle(fontSize: 15),
                   ),
                 ),
               ),
