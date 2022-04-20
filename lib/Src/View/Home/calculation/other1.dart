@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:machine/Src/Constant/Strings.dart';
+import 'package:machine/Src/Widget/custom_box.dart';
 
-class Other2 extends StatefulWidget {
+class Other1 extends StatefulWidget {
   double total = 0.0;
   double rate1;
   double rate2;
   double rate3;
   double rate4;
   Function getTotal;
-  Other2({
+  Other1({
     required this.total,
     required this.rate1,
     required this.rate2,
@@ -20,7 +22,7 @@ class Other2 extends StatefulWidget {
   _OtherState createState() => _OtherState();
 }
 
-class _OtherState extends State<Other2> {
+class _OtherState extends State<Other1> {
   TextEditingController name1 = TextEditingController();
   TextEditingController name2 = TextEditingController();
   TextEditingController name3 = TextEditingController();
@@ -48,26 +50,6 @@ class _OtherState extends State<Other2> {
 
   @override
   Widget build(BuildContext context) {
-    Widget boxList1(
-      String name,
-    ) {
-      return Expanded(
-        child: Container(
-          padding: const EdgeInsets.all(4),
-          height: 25,
-          width: 75,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: const BorderRadius.all(Radius.circular(6))),
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 15),
-          ),
-        ),
-      );
-    }
-
     Widget boxList2(
       String name,
       TextEditingController controller,
@@ -79,7 +61,7 @@ class _OtherState extends State<Other2> {
           height: 25,
           width: 75,
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
+              border: Border.all(color: Colors.black, width: 1),
               borderRadius: const BorderRadius.all(Radius.circular(6))),
           child: TextField(
             decoration: InputDecoration(
@@ -123,17 +105,7 @@ class _OtherState extends State<Other2> {
 
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          height: 50,
-          width: 150,
-          child: const TextField(
-            decoration: InputDecoration(
-              labelText: 'Item Name',
-              border: OutlineInputBorder(),
-            ),
-          ),
-        ),
+        textFeild(),
         const SizedBox(
           height: 8,
         ),
@@ -141,11 +113,11 @@ class _OtherState extends State<Other2> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              boxList1('Siramic'),
+              boxList1(Strings.siramic),
               const SizedBox(width: 20),
-              boxList2('Diamond', dn1, d1),
+              boxList2(Strings.diamond, dn1, d1),
               const SizedBox(width: 20),
-              boxList2('Rate', rt1, r1),
+              boxList2(Strings.rate, rt1, r1),
               const SizedBox(width: 20),
               boxList1(widget.rate1.toString()),
             ],
@@ -155,11 +127,11 @@ class _OtherState extends State<Other2> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              boxList1('LCD'),
+              boxList1(Strings.lcd),
               const SizedBox(width: 20),
-              boxList2('Diamond', dn2, d2),
+              boxList2(Strings.diamond, dn2, d2),
               const SizedBox(width: 20),
-              boxList2('Rate', rt2, r2),
+              boxList2(Strings.rate, rt2, r2),
               const SizedBox(width: 20),
               boxList1(widget.rate2.toString()),
             ],
@@ -169,11 +141,11 @@ class _OtherState extends State<Other2> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              boxList1('kasti'),
+              boxList1(Strings.kasti),
               const SizedBox(width: 20),
-              boxList2('Diamond', dn3, d3),
+              boxList2(Strings.diamond, dn3, d3),
               const SizedBox(width: 20),
-              boxList2('Rate', rt3, r3),
+              boxList2(Strings.rate, rt3, r3),
               const SizedBox(width: 20),
               boxList1(widget.rate3.toString()),
             ],
@@ -183,43 +155,17 @@ class _OtherState extends State<Other2> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              boxList1('other'),
+              boxList1(Strings.other),
               const SizedBox(width: 20),
-              boxList2('Diamond', dn4, d4),
+              boxList2(Strings.diamond, dn4, d4),
               const SizedBox(width: 20),
-              boxList2('Rate', rt4, r4),
+              boxList2(Strings.rate, rt4, r4),
               const SizedBox(width: 20),
               boxList1(widget.rate4.toString()),
             ],
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          child: Row(
-            children: [
-              const Expanded(
-                  child: Text(
-                'Total Amount :- ',
-                style: TextStyle(fontSize: 16),
-              )),
-              Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  height: 25,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      borderRadius: const BorderRadius.all(Radius.circular(6))),
-                  child: Text(
-                    widget.total.toString(),
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        totalValue(value: widget.total.toString()),
       ],
     );
   }

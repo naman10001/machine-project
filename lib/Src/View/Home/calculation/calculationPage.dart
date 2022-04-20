@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:machine/Src/Constant/Strings.dart';
 
 class CalculationPage extends StatefulWidget {
   double siramic;
@@ -8,12 +9,13 @@ class CalculationPage extends StatefulWidget {
   double tAmount;
 
   CalculationPage({
+    Key? key,
     required this.siramic,
     required this.lcd,
     required this.kasti,
     required this.other,
     required this.tAmount,
-  });
+  }) : super(key: key);
 
   @override
   _CalculationPageState createState() => _CalculationPageState();
@@ -34,7 +36,7 @@ class _CalculationPageState extends State<CalculationPage> {
               height: 25,
               width: 175,
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
+                  border: Border.all(color: Colors.black, width: 1),
                   borderRadius: const BorderRadius.all(Radius.circular(6))),
               child: Text(
                 name,
@@ -50,7 +52,7 @@ class _CalculationPageState extends State<CalculationPage> {
               height: 25,
               width: 175,
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
+                  border: Border.all(color: Colors.black, width: 1),
                   borderRadius: const BorderRadius.all(Radius.circular(6))),
               child: Text(
                 name1,
@@ -67,38 +69,44 @@ class _CalculationPageState extends State<CalculationPage> {
       children: [
         Container(
           padding: const EdgeInsets.all(10),
-          child:
-              boxList1('Total Siramic Amount :- ', widget.siramic.toString()),
+          child: boxList1(Strings.total + '  ' + Strings.siramic,
+              widget.siramic.toString()),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
         Container(
           padding: const EdgeInsets.all(10),
-          child: boxList1('Total LCD Amount :- ', widget.lcd.toString()),
+          child: boxList1(
+              Strings.total + '  ' + Strings.lcd, widget.lcd.toString()),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
         Container(
           padding: const EdgeInsets.all(10),
-          child: boxList1('Total kasti Amount :- ', widget.kasti.toString()),
+          child: boxList1(
+              Strings.total + '  ' + Strings.kasti, widget.kasti.toString()),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
         Container(
           padding: const EdgeInsets.all(10),
-          child: boxList1('Total Other Amount :- ', widget.other.toString()),
+          child: boxList1(
+              Strings.total + '  ' + Strings.other, widget.other.toString()),
         ),
-        const SizedBox(height: 8),
-        Container(
-          height: 30,
-          width: 250,
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey, width: 1),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(10),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: Container(
+            height: 30,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 7),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey, width: 1),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
             ),
-          ),
-          child: Text(
-            'Your Total Amount :- ' + widget.tAmount.toString(),
-            style: const TextStyle(fontSize: 15),
+            child: Text(
+              'YOUR TOTAL AMOUNT :- ' + ' ' + widget.tAmount.toString(),
+              style: const TextStyle(fontSize: 15),
+            ),
           ),
         ),
       ],

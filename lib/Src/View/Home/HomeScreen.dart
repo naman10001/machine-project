@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:machine/calculation/calculationPage.dart';
-import 'package:machine/calculation/imagePick.dart';
-import 'package:machine/calculation/other.dart';
-import 'package:machine/calculation/other1.dart';
-import 'package:machine/calculation/other2.dart';
-import 'package:machine/calculation/other3.dart';
-import 'package:machine/calculation/product.dart';
+import 'package:machine/Src/Constant/Strings.dart';
+import 'package:machine/Src/View/Home/calculation/calculationPage.dart';
+import 'package:machine/Src/View/Home/calculation/imagePick.dart';
+import 'package:machine/Src/View/Home/calculation/other.dart';
+import 'package:machine/Src/View/Home/calculation/other1.dart';
+import 'package:machine/Src/View/Home/calculation/other2.dart';
+import 'package:machine/Src/View/Home/calculation/other3.dart';
+import 'package:machine/Src/View/Home/calculation/product.dart';
+import 'package:machine/Src/View/List/ListScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController _designName = TextEditingController();
   double total1 = 0.0;
   double total2 = 0.0;
   double total3 = 0.0;
@@ -72,8 +76,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Costing Calculation'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.done))],
+        title: const Text(Strings.costingcal),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                if (_designName.text.isEmpty) {
+                  return null;
+                } else {
+                  FirebaseFirestore.instance.collection('Machine').add(
+                    {
+                      'id': '',
+                      'Design_Name': _designName.text,
+                      'Time': DateTime.now().toIso8601String(),
+                    },
+                  ).then(
+                    (value) => FirebaseFirestore.instance
+                        .collection('Machine')
+                        .doc(value.id)
+                        .update(
+                      {
+                        'id': value.id,
+                      },
+                    ),
+                  );
+                  Navigator.pop(context);
+                }
+              },
+              icon: const Icon(Icons.done))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -83,9 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(10),
               height: 50,
               width: MediaQuery.of(context).size.width,
-              child: const TextField(
-                decoration: InputDecoration(
-                  labelText: 'Enter Your Design Name',
+              child: TextField(
+                controller: _designName,
+                decoration: const InputDecoration(
+                  labelText: Strings.designname,
                   border: OutlineInputBorder(),
                 ),
               ),

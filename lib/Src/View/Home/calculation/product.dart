@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:machine/Src/Constant/Strings.dart';
+import 'package:machine/Src/Widget/custom_box.dart';
 
 class Product extends StatefulWidget {
   double total;
   Function getTotal;
 
-  Product({required this.total, required this.getTotal});
+  Product({Key? key, required this.total, required this.getTotal})
+      : super(key: key);
 
   @override
   _ProductState createState() => _ProductState();
@@ -77,26 +80,6 @@ class _ProductState extends State<Product> {
 
   @override
   Widget build(BuildContext context) {
-    Widget boxList1(
-      String name,
-    ) {
-      return Expanded(
-        child: Container(
-          padding: const EdgeInsets.all(4),
-          height: 25,
-          width: 75,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: const BorderRadius.all(Radius.circular(6))),
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 15),
-          ),
-        ),
-      );
-    }
-
     Widget boxList2(
       String name,
       TextEditingController controller,
@@ -109,7 +92,7 @@ class _ProductState extends State<Product> {
           height: 25,
           width: 67,
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
+              border: Border.all(color: Colors.black, width: 1),
               borderRadius: const BorderRadius.all(Radius.circular(6))),
           child: TextField(
             decoration: InputDecoration(
@@ -196,29 +179,27 @@ class _ProductState extends State<Product> {
         children: [
           const Center(
             child: Text(
-              'Product',
+              Strings.product,
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           Container(
             padding: const EdgeInsets.all(2),
             child: Row(
               children: const [
-                Expanded(child: Text('Name')),
+                Expanded(child: Text(Strings.name)),
                 SizedBox(width: 34),
-                Expanded(child: Text('Stitch')),
+                Expanded(child: Text(Strings.stitch)),
                 SizedBox(width: 32),
-                Expanded(child: Text('Head')),
+                Expanded(child: Text(Strings.head)),
                 SizedBox(width: 32),
-                Expanded(child: Text('Stitch Rate')),
+                Expanded(child: Text(Strings.stitchRate)),
                 SizedBox(width: 30),
-                Expanded(child: Text('Rate')),
+                Expanded(child: Text(Strings.rate)),
               ],
             ),
           ),
@@ -230,15 +211,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name1, TextInputType.name, n1),
+                boxList2(Strings.name, name1, TextInputType.name, n1),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch1, TextInputType.number,
+                    s1.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch1, TextInputType.number, s1.toString()),
+                    Strings.head, head1, TextInputType.number, h1.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head1, TextInputType.number, h1.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate1, TextInputType.number, sr1.toString()),
+                boxList2(Strings.sRate, sRate1, TextInputType.number,
+                    sr1.toString()),
                 const SizedBox(width: 2),
                 boxList1(tr1.toString()),
               ],
@@ -248,15 +230,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name2, TextInputType.name, n2),
+                boxList2(Strings.name, name2, TextInputType.name, n2),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch2, TextInputType.number,
+                    s2.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch2, TextInputType.number, s2.toString()),
+                    Strings.head, head2, TextInputType.number, h2.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head2, TextInputType.number, h2.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate2, TextInputType.number, sr2.toString()),
+                boxList2(Strings.sRate, sRate2, TextInputType.number,
+                    sr2.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr2.toString(),
@@ -268,15 +251,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name3, TextInputType.name, n3),
+                boxList2(Strings.name, name3, TextInputType.name, n3),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch3, TextInputType.number,
+                    s3.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch3, TextInputType.number, s3.toString()),
+                    Strings.head, head3, TextInputType.number, h3.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head3, TextInputType.number, h3.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate3, TextInputType.number, sr3.toString()),
+                boxList2(Strings.sRate, sRate3, TextInputType.number,
+                    sr3.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr3.toString(),
@@ -288,15 +272,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name4, TextInputType.name, n4),
+                boxList2(Strings.name, name4, TextInputType.name, n4),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch4, TextInputType.number,
+                    s4.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch4, TextInputType.number, s4.toString()),
+                    Strings.head, head4, TextInputType.number, h4.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head4, TextInputType.number, h4.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate4, TextInputType.number, sr4.toString()),
+                boxList2(Strings.sRate, sRate4, TextInputType.number,
+                    sr4.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr4.toString(),
@@ -308,15 +293,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name5, TextInputType.name, n5),
+                boxList2(Strings.name, name5, TextInputType.name, n5),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch5, TextInputType.number,
+                    s5.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch5, TextInputType.number, s5.toString()),
+                    Strings.head, head5, TextInputType.number, h5.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head5, TextInputType.number, h5.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate5, TextInputType.number, sr5.toString()),
+                boxList2(Strings.sRate, sRate5, TextInputType.number,
+                    sr5.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr5.toString(),
@@ -328,15 +314,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name6, TextInputType.name, n6),
+                boxList2(Strings.name, name6, TextInputType.name, n6),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch6, TextInputType.number,
+                    s6.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch6, TextInputType.number, s6.toString()),
+                    Strings.head, head6, TextInputType.number, h6.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head6, TextInputType.number, h6.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate6, TextInputType.number, sr6.toString()),
+                boxList2(Strings.sRate, sRate6, TextInputType.number,
+                    sr6.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr6.toString(),
@@ -348,15 +335,16 @@ class _ProductState extends State<Product> {
             padding: const EdgeInsets.all(4),
             child: Row(
               children: [
-                boxList2('Name', name7, TextInputType.name, n7),
+                boxList2(Strings.name, name7, TextInputType.name, n7),
+                const SizedBox(width: 2),
+                boxList2(Strings.stitch, stitch7, TextInputType.number,
+                    s7.toString()),
                 const SizedBox(width: 2),
                 boxList2(
-                    'Stitch', stitch7, TextInputType.number, s7.toString()),
+                    Strings.head, head7, TextInputType.number, h7.toString()),
                 const SizedBox(width: 2),
-                boxList2('Head', head7, TextInputType.number, h7.toString()),
-                const SizedBox(width: 2),
-                boxList2(
-                    'S Rate', sRate7, TextInputType.number, sr7.toString()),
+                boxList2(Strings.sRate, sRate7, TextInputType.number,
+                    sr7.toString()),
                 const SizedBox(width: 2),
                 boxList1(
                   tr7.toString(),
@@ -364,14 +352,12 @@ class _ProductState extends State<Product> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           Row(
             children: [
               const Expanded(
                   child: Text(
-                'Total Amount :- ',
+                Strings.totakAmount,
                 style: TextStyle(fontSize: 16),
               )),
               Expanded(
@@ -380,7 +366,7 @@ class _ProductState extends State<Product> {
                   height: 25,
                   width: 100,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.black, width: 1),
                       borderRadius: const BorderRadius.all(Radius.circular(6))),
                   child: Text(
                     widget.total.toString(),
