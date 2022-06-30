@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:machine/Src/Constant/Strings.dart';
 import 'package:machine/Src/Constant/color_const.dart';
+import 'package:machine/Src/View/auth/login_screen.dart';
 import 'package:machine/Src/View/calculation/calculation.dart';
 import 'package:machine/Src/View/home/list_detail.dart';
 
@@ -18,6 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchQuery = TextEditingController();
   String _searchKey = '';
   Stream<QuerySnapshot<Map<String, dynamic>>>? serachClear;
+  void handleClick(int item) {
+    if (item == 0) {
+      return null;
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,18 +42,25 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text(Strings.yourList),
           centerTitle: true,
           actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        const CalculationScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.add),
-            ),
+            // IconButton(
+            //   onPressed: () async {
+            //     await FirebaseAuth.instance.signOut();
+            //   },
+            //   icon: const Icon(Icons.logout),
+            // ),
+            PopupMenuButton<int>(
+              itemBuilder: (context) => const [
+                PopupMenuItem(
+                  child: Text('User Info'),
+                  value: 0,
+                ),
+                PopupMenuItem(
+                  child: Text('Logout'),
+                  value: 1,
+                ),
+              ],
+              onSelected: handleClick,
+            )
           ],
         ),
         body: GestureDetector(
@@ -117,8 +139,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                     lcd: snapshot.data?.docs[index]
                                             ['Total_lcd'] ??
                                         '',
+
                                     totalAmount: snapshot.data?.docs[index]
                                             ['Total_amount'] ??
+                                        '',
+                                    other1Name: snapshot.data?.docs[index]
+                                            ['Other1_name'] ??
+                                        '',
+                                    other2Name: snapshot.data?.docs[index]
+                                            ['Other2_name'] ??
+                                        '',
+                                    other3Name: snapshot.data?.docs[index]
+                                            ['Other3_name'] ??
+                                        '',
+                                    other4Name: snapshot.data?.docs[index]
+                                            ['Other4_name'] ??
                                         '',
                                   ),
                                 ),
@@ -130,6 +165,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const CalculationScreen(),
+              ),
+            );
+          },
+          elevation: 0,
+          backgroundColor: ColorConst.amber,
+          child: const Icon(
+            Icons.add,
+            color: ColorConst.black,
           ),
         ),
       ),

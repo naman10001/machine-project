@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:machine/Src/Bloc/create_account_bloc.dart';
-import 'package:machine/Src/Bloc/password_show_bloc.dart';
+
 import 'package:machine/Src/Constant/Strings.dart';
 import 'package:machine/Src/Constant/color_const.dart';
 import 'package:machine/Src/Constant/global.dart';

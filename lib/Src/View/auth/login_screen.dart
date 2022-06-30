@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:machine/Src/Bloc/login_bloc.dart';
 import 'package:machine/Src/Constant/Strings.dart';
@@ -22,6 +24,22 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isRemeber = false;
   bool isPasswordShow = false;
   final _formKey = GlobalKey<FormState>();
+  List<dynamic> userList = [];
+  @override
+  void initState() {
+    super.initState();
+    dataFetch();
+  }
+
+  void dataFetch() {
+    if (prefObject?.containsKey('User') ?? false) {
+      List data = json.decode(prefObject!.getString('User').toString());
+      _emailController.text = data[0];
+      _passwordController.text = data[1];
+      isRemeber = data[2];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,12 +163,23 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context, snapshot) {
           return MaterialButton(
             onPressed: () async {
+              userList = [];
               if (_formKey.currentState!.validate()) {
                 ApiResponse response = await loginBloc.loginSink(
                   email: _emailController.text,
                   password: _passwordController.text,
                 );
                 if (response.statusCode == 200) {
+                  if (isRemeber) {
+                    userList.add(_emailController.text);
+                    userList.add(_passwordController.text);
+                    userList.add(isRemeber);
+                    prefObject!.setString('User', json.encode(userList));
+                  } else {
+                    userList.clear();
+                    prefObject!.remove('User');
+                  }
+
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

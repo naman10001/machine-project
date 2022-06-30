@@ -19,6 +19,10 @@ class CalculationScreen extends StatefulWidget {
 
 class _CalculationScreenState extends State<CalculationScreen> {
   final TextEditingController _designName = TextEditingController();
+  final TextEditingController _othet1Name = TextEditingController();
+  final TextEditingController _othet2Name = TextEditingController();
+  final TextEditingController _othet3Name = TextEditingController();
+  final TextEditingController _othet4Name = TextEditingController();
   double total1 = 0.0;
   double total2 = 0.0;
   double total3 = 0.0;
@@ -93,6 +97,10 @@ class _CalculationScreenState extends State<CalculationScreen> {
                         'Design_Name': _designName.text,
                         'Time': DateTime.now().toIso8601String(),
                         'Product_total': total1,
+                        'Other1_name': _othet1Name.text,
+                        'Other2_name': _othet2Name.text,
+                        'Other3_name': _othet3Name.text,
+                        'Other4_name': _othet4Name.text,
                         'Other1': total2,
                         'Other2': total3,
                         'Other3': total4,
@@ -167,6 +175,7 @@ class _CalculationScreenState extends State<CalculationScreen> {
               ),
               const SizedBox(height: 2),
               Other(
+                controller: _othet1Name,
                 total: total2,
                 rate1: o1,
                 rate2: o2,
@@ -176,6 +185,7 @@ class _CalculationScreenState extends State<CalculationScreen> {
               ),
               const SizedBox(height: 2),
               Other1(
+                controller: _othet2Name,
                 total: total3,
                 rate1: o11,
                 rate2: o12,
@@ -185,6 +195,7 @@ class _CalculationScreenState extends State<CalculationScreen> {
               ),
               const SizedBox(height: 2),
               Other2(
+                controller: _othet3Name,
                 total: total4,
                 rate1: o21,
                 rate2: o22,
@@ -194,6 +205,7 @@ class _CalculationScreenState extends State<CalculationScreen> {
               ),
               const SizedBox(height: 2),
               Other3(
+                controller: _othet4Name,
                 total: total5,
                 rate1: o31,
                 rate2: o32,

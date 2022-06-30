@@ -9,6 +9,7 @@ class Other extends StatefulWidget {
   double rate3;
   double rate4;
   Function getTotal;
+  TextEditingController controller;
   Other({
     Key? key,
     required this.total,
@@ -17,6 +18,7 @@ class Other extends StatefulWidget {
     required this.rate3,
     required this.rate4,
     required this.getTotal,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -106,7 +108,7 @@ class _OtherState extends State<Other> {
 
     return Column(
       children: [
-        textFeild(),
+        textFeild(controller: widget.controller),
         const SizedBox(
           height: 8,
         ),

@@ -18,6 +18,10 @@ class ListDetail extends StatefulWidget {
     this.otherTotal,
     this.siramic,
     this.totalAmount,
+    this.other1Name,
+    this.other2Name,
+    this.other3Name,
+    this.other4Name,
   }) : super(key: key);
 
   final String design;
@@ -32,6 +36,10 @@ class ListDetail extends StatefulWidget {
   final double? kasti;
   final double? lcd;
   final double? totalAmount;
+  final String? other1Name;
+  final String? other2Name;
+  final String? other3Name;
+  final String? other4Name;
 
   @override
   State<ListDetail> createState() => _ListDetailState();
@@ -69,16 +77,20 @@ class _ListDetailState extends State<ListDetail> {
                   value: widget.productTotal.toString()),
               _spacer(height: 0.01, width: 0),
               _fieldAndValue(
-                  name: 'Other! Total :-', value: widget.other1.toString()),
+                  name: '${widget.other1Name} Total :-',
+                  value: widget.other1.toString()),
               _spacer(height: 0.01, width: 0),
               _fieldAndValue(
-                  name: 'Other2 Total :-', value: widget.other2.toString()),
+                  name: '${widget.other2Name} Total :-',
+                  value: widget.other2.toString()),
               _spacer(height: 0.01, width: 0),
               _fieldAndValue(
-                  name: 'Other3 Total :-', value: widget.other3.toString()),
+                  name: '${widget.other3Name} Total :-',
+                  value: widget.other3.toString()),
               _spacer(height: 0.01, width: 0),
               _fieldAndValue(
-                  name: 'Other4 Total :-', value: widget.other4.toString()),
+                  name: '${widget.other4Name} Total :-',
+                  value: widget.other4.toString()),
               _spacer(height: 0.01, width: 0),
               _fieldAndValue(
                   name: 'Other Total :-', value: widget.otherTotal.toString()),

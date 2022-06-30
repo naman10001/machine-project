@@ -53,13 +53,16 @@ Widget totalValue({
   );
 }
 
-Widget textFeild() {
+Widget textFeild({
+  required TextEditingController controller,
+}) {
   return Container(
     padding: const EdgeInsets.all(10),
     height: 50,
     width: 150,
-    child: const TextField(
-      decoration: InputDecoration(
+    child: TextField(
+      controller: controller,
+      decoration: const InputDecoration(
           labelText: Strings.itemName,
           border: OutlineInputBorder(),
           enabledBorder:
